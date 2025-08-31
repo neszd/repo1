@@ -1,0 +1,111 @@
+:root{
+  --bg:#0b1220; --card:#111827; --muted:#94a3b8; --text:#ffffff; --input:#1f2937;
+  --ring:#3b82f6; --primary:#6d28d9; --primary-2:#5b21b6; --error:#f87171;
+}
+
+.page{
+  min-height:100dvh; display:grid; place-items:center; padding:24px;
+  background:
+    radial-gradient(1000px 600px at 10% -20%, #172554 0, transparent 60%),
+    radial-gradient(1000px 600px at 110% 120%, #1e293b 0, transparent 60%),
+    linear-gradient(#0b1220, #0b1220);
+}
+
+.card{
+  width:min(420px, 92vw);
+  background:var(--card);
+  color:var(--text);
+  border:1px solid rgba(255,255,255,.06);
+  border-radius:20px;
+  padding:28px;
+  box-shadow:0 10px 30px rgba(0,0,0,.45);
+}
+
+/* Título */
+.card h1#title { color:#fff; }
+
+.logo{ display:grid; place-items:center; margin-bottom:6px; }
+h1{ text-align:center; font-size:1.6rem; margin:0 0 4px; }
+.subtitle{ text-align:center; margin:0 0 18px; font-size:.95rem; }
+
+/* Formulario */
+form{ display:grid; gap:16px; }
+.field{ display:block; }
+.label{ display:block; font-size:.9rem; margin-bottom:6px; }
+
+.input{
+  display:flex; align-items:center; gap:8px;
+  background:var(--input);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:12px;
+  padding:10px 12px;
+}
+.input:focus-within{
+  border-color:var(--ring);
+  box-shadow:0 0 0 3px rgba(59,130,246,.25);
+}
+.input input{
+  flex:1; background:transparent; border:none; color:#fff; font-size:1rem; outline:none;
+}
+/* placeholders blancos */
+.input input::placeholder,
+.input input::-webkit-input-placeholder,
+.input input::-moz-placeholder,
+.input input:-ms-input-placeholder,
+.input input::-ms-input-placeholder { color: rgba(255,255,255,.85); }
+
+.input .icon{ width:20px; height:20px; opacity:.9; }
+.input .icon svg{ width:100%; height:100%; fill:#e5e7eb; }
+
+/* Botón */
+button.primary{
+  border:none; width:100%; padding:12px 16px; border-radius:12px;
+  background:linear-gradient(180deg, var(--primary), var(--primary-2));
+  color:white; font-weight:600; cursor:pointer; transition:transform .02s ease;
+}
+button.primary:disabled{ opacity:.6; cursor:not-allowed; color:#fff; }
+button.primary:active{ transform:translateY(1px); }
+
+button.ghost{
+  margin-left:auto; border:none; background:transparent; cursor:pointer; padding:4px; border-radius:8px;
+}
+button.ghost:focus-visible{ box-shadow:0 0 0 3px rgba(59,130,246,.35); }
+button.ghost svg{ width:20px; height:20px; fill:#e5e7eb; }
+
+/* Fila de opciones */
+.row{ display:flex; justify-content:space-between; align-items:center; margin-top:-4px; }
+.remember{ display:flex; gap:8px; align-items:center; user-select:none; font-size:.95rem; }
+
+/* Links */
+.link, .link:visited, .link:active { color:#fff; text-decoration:none; }
+.link:hover{ text-decoration:underline; }
+
+/* Mensajes base */
+.error{ font-size:.85rem; margin-top:6px; }
+.foot{ text-align:center; margin-top:18px; font-size:.95rem; }
+
+/* Spinner */
+.spinner{
+  width:18px; height:18px; display:inline-block;
+  border:2px solid rgba(255,255,255,.3);
+  border-top-color:white;
+  border-radius:50%;
+  animation:spin .8s linear infinite;
+}
+@keyframes spin{ to{ transform:rotate(360deg); } }
+
+/* ——— Forzar blancos en textos dentro de la tarjeta (sin tocar errores) ——— */
+.card .subtitle,
+.card .label,
+.card .remember span,
+.card .foot,
+.card .link,
+.card .link:visited,
+.card .link:active { color:#fff; }
+
+/* ——— Errores en rojo ——— */
+small.error,
+.error { color: var(--error) !important; opacity: 1; font-weight: 500; }
+.error { font-size:.85rem; margin-top:6px; } /* sin color aquí */
+.error--red { color:#ef4444; }
+.error--amber { color:#fbbf24; }
